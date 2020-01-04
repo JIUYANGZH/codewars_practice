@@ -187,11 +187,17 @@ solution:
 ```
 import re
 
+# ?= is a positive lookahead. It captured match must be followed by whatever is within the parentheses but that part isn't captured.
+
 def search_substr(full_text, search_text, allow_overlap=True):
     if not full_text or not search_text: 
         return 0
     elif allow_overlap == True:
-        return len(re.findall(f'(?=({search_text}))', full_text))
+        return len(re.findall(r'(?=({}))'.format(search_text), full_text))
     elif allow_overlap == False:
         return len(re.findall(search_text, full_text))
 ```
+## Legendre's formula
+
+阶乘数的质因子分解，求一个阶乘数不同质因子的幂指数
+\nu _{p}(n!)=\sum _{{i=1}}^{{\infty }}\left\lfloor {\frac  {n}{p^{i}}}\right\rfloor ,
