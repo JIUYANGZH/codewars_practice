@@ -1,6 +1,6 @@
 # codewars_practice
 
-## Consider the following equation of a surface S: z*z*z = x*x * y*y.
+## Consider the following equation of a surface S: z\*z\*z = x\*x * y\*y.
 
 Take a cross section of S by a plane P: z = k where k is a positive integer (k > 0).
 Call this cross section C(k).
