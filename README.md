@@ -92,3 +92,91 @@ meters(51500);
 
 meters(5000000);
 // returns "5Mm"
+
+solution:
+```
+def meters(x):
+    arr = ['','k','M','G','T','P','E','Z','Y']
+    count=0
+    while x>=1000 :
+        x /=1000.00 
+        count+=1
+    if int(x)==x:
+        x=int(x) 
+    return str(x)+arr[count]+'m'
+```
+
+## flatten() 这题是递归
+
+For this exercise you will create a global flatten method. The method takes in any number of arguments and flattens them into a single array. If any of the arguments passed in are an array then the individual objects within the array will be flattened so that they exist at the same level as the other arguments. Any nested arrays, no matter how deep, should be flattened into the single array result.
+
+The following are examples of how this function would be used and what the expected results would be:
+
+flatten(1, [2, 3], 4, 5, [6, [7]]) # returns [1, 2, 3, 4, 5, 6, 7]
+flatten('a', ['b', 2], 3, None, [[4], ['c']]) # returns ['a', 'b', 2, 3, None, 4, 'c']
+
+solution:
+```
+def flatten(*args):
+    # 送进来一个list，挨个检查其中的元素，如果元素是list，就再传进flatten，如果不是list，就放进result里
+    return [x for a in args for x in (flatten(*a) if isinstance(a, list) else [a])]
+    
+    相当于
+    for a in args:
+        if a 是list：
+            a1 = flatten(a)
+            if a1 是list：
+                a2 = flatten(a1)
+                ...
+        最终把直到不是list为止，然后把所有元素加进result里
+        if a 不是list：
+            直接把a加进result里
+    
+```
+## Diophantine Equation
+
+In mathematics, a Diophantine equation is a polynomial equation, usually with two or more unknowns, such that only the integer solutions are sought or studied.
+
+In this kata we want to find all integers x, y (x >= 0, y >= 0) solutions of a diophantine equation of the form:
+
+x2 - 4 * y2 = n
+(where the unknowns are x and y, and n is a given positive number) in decreasing order of the positive xi.
+
+If there is no solution return [] or "[]" or "". (See "RUN SAMPLE TESTS" for examples of returns).
+
+Examples:
+solEquaStr(90005) --> "[[45003, 22501], [9003, 4499], [981, 467], [309, 37]]"
+solEquaStr(90002) --> "[]"
+Hint:
+x2 - 4 * y2 = (x - 2*y) * (x + 2*y)
+
+solution:
+```
+import math
+def sol_equa(n):
+    res = []
+    for i in range(1, int(math.sqrt(n)) + 1):
+        # 从1到根号n，挨个试，如果i是n的因子，就用n除i得到另一个因子j，再判断是不是整数
+        if n % i == 0:
+            j = n // i
+            if (i + j) % 2 == 0 and (j - i) % 4 == 0:
+                x = (i + j) // 2
+                y = (j - i) // 4
+                res.append([x, y])
+            
+    return res
+```
+## Return substring instance count - 2
+
+Complete the solution so that it returns the number of times the search_text is found within the full_text.
+
+search_substr( fullText, searchText, allowOverlap = true )
+so that overlapping solutions are (not) counted. If the searchText is empty, it should return 0. Usage examples:
+
+search_substr('aa_bb_cc_dd_bb_e', 'bb') # should return 2 since bb shows up twice
+search_substr('aaabbbcccc', 'bbb') # should return 1
+search_substr( 'aaa', 'aa' ) # should return 2
+search_substr( 'aaa', '' ) # should return 0
+search_substr( 'aaa', 'aa', false ) # should return 1
+
+
