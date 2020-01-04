@@ -200,4 +200,8 @@ def search_substr(full_text, search_text, allow_overlap=True):
 ## Legendre's formula
 
 阶乘数的质因子分解，求一个阶乘数不同质因子的幂指数
-$$\nu _{p}(n!)=\sum _{{i=1}}^{{\infty }}\left\lfloor {\frac  {n}{p^{i}}}\right\rfloor$$ 
+ \begin{equation}
+\nu _{p}(n!)=\sum _{{i=1}}^{{\infty }}\left\lfloor {\frac  {n}{p^{i}}}\right\rfloor
+\end{equation}
+
+
