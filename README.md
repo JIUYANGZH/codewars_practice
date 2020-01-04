@@ -203,4 +203,35 @@ def search_substr(full_text, search_text, allow_overlap=True):
 
 对于一个数n的阶乘n!，不同质因子p的幂指数为sum([int(n/p**i) for i in range(0,somevalue)])
 
+## Fixed-length integer partitions 递归题
 
+A generalization of Bézier surfaces, called the S-patch, uses an interesting scheme for indexing its control points.
+
+In the case of an n-sided surface of degree d, each index has n non-negative integers that sum to d, and all possible configurations are used.
+
+For example, for a 3-sided quadratic (degree 2) surface the control points are:
+
+indices 3 2 => [[0,0,2],[0,1,1],[0,2,0],[1,0,1],[1,1,0],[2,0,0]]
+
+```
+n为每个list的长度，d为每个list的和
+def indices(n, d):
+    return [[r] + point for r in range(d + 1) for point in indices(n-1, d-r)] if n > 1 else [[d]]
+```
+
+## By the Power Set of Castle Grayskull
+
+Write a function that returns all of the sublists of a list or Array.
+
+Example:
+
+power([1,2,3])
+# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+```
+def power(s):
+  set = [[]]
+  for num in s:
+    set += [x+[num] for x in set]
+  return set
+```
