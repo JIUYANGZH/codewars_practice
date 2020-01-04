@@ -183,4 +183,15 @@ search_substr( 'aaa', '' ) \# should return 0
 
 search_substr( 'aaa', 'aa', false ) \# should return 1
 
+solution:
+```
+import re
 
+def search_substr(full_text, search_text, allow_overlap=True):
+    if not full_text or not search_text: 
+        return 0
+    elif allow_overlap == True:
+        return len(re.findall(f'(?=({search_text}))', full_text))
+    elif allow_overlap == False:
+        return len(re.findall(search_text, full_text))
+```
