@@ -226,7 +226,7 @@ Write a function that returns all of the sublists of a list or Array.
 Example:
 
 power([1,2,3])
-# => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+ => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 ```
 def power(s):
