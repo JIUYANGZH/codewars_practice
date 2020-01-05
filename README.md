@@ -191,6 +191,20 @@ regex = compile("""
 $              # end word
 """, VERBOSE)
 ```
+## Extract the domain name from a URL
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+domain_name("http://github.com/carbonfive/raygun") == "github" 
+domain_name("http://www.zombie-bites.com") == "zombie-bites"
+domain_name("https://www.cnet.com") == "cnet"
+```
+import re
+
+# re.search匹配字符串中的任意部分，不必从头开始匹配, group是返回特定的匹配部位，group(0)返回整体结果，group(1)返回第一个括号的匹配结果
+# ?P<value>的意思就是命名一个名字为value的组，匹配规则符合后面的正则表达式，在这里是命名一个叫name的组，然后匹配[\w-]+\.
+def domain_name(url):
+    return re.search('(https?://)?(www\d?\.)?(?P<name>[\w-]+)\.', url).group('name')
+```
 
 ## Return substring instance count - 2
 
@@ -327,4 +341,102 @@ def pick_peaks(arr):
         # 如果后一个数等于前一个数，不做任何动作，继续比较下一个
     return {'pos':pos, 'peaks':[arr[i] for i in pos]}
 ```
+## Memoized Fibonacci 这个不是很懂
 
+implement the memoization solution to calculate fibonacci quickly, The trick of the memoized version is that we will keep a cache data structure (most likely an associative array) where we will store the Fibonacci numbers as we calculate them. When a Fibonacci number is calculated, we first look it up in the cache, if it's not there, we calculate it and put it in the cache, otherwise we returned the cached number.
+
+这个题是这样的，test给的是一大堆1000以内的数，让你用cache的方法迅速计算这一大堆数的fibonacci，这个算法是每个数计算以后都把计算过程中的
+所有数加进cache里，这样后面如果要算比前面的数小的数，就直接从cache里提取就好，所以并不是单个数计算很快，计算单个fibonacci下面的代码快
+
+```
+c = [0]
+
+def fib(n):
+    if n in [0, 1]:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+def fibonacci(n):
+    if n >= len(c):
+        c.append(fib(n))
+    return c[n]
+    
+# 快速计算单个数fibonacci
+def f(n):
+    a,b = 0,1
+    for i in range(n-1):
+        a,b = b,a+b
+    return b
+```
+## Number of trailing zeros of N!
+
+这道题实际上是让你算N的阶乘中质因子5的幂指数是多少，因为一个10会给N！带来一个0，10又只能由2\*5得到，所以只需计算5的幂指数就可以
+
+The question boils down to how many times n! is divisible by 10, i.e. what's the largest k such that 10^k divides n! Since the prime decomposition of 10 is 5 * 2, this is the same as finding the largest k such that 5^k and 2^k both divide n!.
+
+Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+N! = 1 * 2 * 3 * ... * N
+
+Be careful 1000! has 2568 digits...
+
+For more info, see: http://mathworld.wolfram.com/Factorial.html
+
+Examples
+zeros(6) = 1
+# 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720 --> 1 trailing zero
+
+zeros(12) = 2
+# 12! = 479001600 --> 2 trailing zeros
+```
+def zeros(n):
+  x = n/5
+  return x+zeros(x) if x else 0
+```
+
+## Calculating with Functions
+
+这道题学习怎样使一个function输出另一个function，通过lambda, four(plus(five())) = four(plus(five)) = four(lambda x:x+5) = 4+5 = 9
+
+因为 lambda x:x+5 = f(x): return x+5, 运算符里面的赋给x+y的y，运算符外面的赋给x+y的x
+
+This time we want to write calculations using functions and get the results. Let's have a look at some examples:
+
+seven(times(five())) # must return 35
+
+four(plus(nine())) # must return 13
+
+eight(minus(three())) # must return 5
+
+six(divided_by(two())) # must return 3
+
+```
+def zero(f = None): return 0 if not f else f(0)
+def one(f = None): return 1 if not f else f(1)
+def two(f = None): return 2 if not f else f(2)
+def three(f = None): return 3 if not f else f(3)
+def four(f = None): return 4 if not f else f(4)
+def five(f = None): return 5 if not f else f(5)
+def six(f = None): return 6 if not f else f(6)
+def seven(f = None): return 7 if not f else f(7)
+def eight(f = None): return 8 if not f else f(8)
+def nine(f = None): return 9 if not f else f(9)
+
+def plus(y): return lambda x: x+y
+def minus(y): return lambda x: x-y
+def times(y): return lambda  x: x*y
+def divided_by(y): return lambda  x: x/y
+```
+## Moving Zeros To The End
+
+这道题考察的是python里1=True, 0=False, 但是1 is not True, 0 is not False
+
+Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+
+move_zeros([false,1,0,1,2,0,1,3,"a"]) # returns[false,1,1,2,1,3,"a",0,0]
+
+```
+def move_zeros(arr):
+    l = [i for i in arr if isinstance(i, bool) or i!=0]
+    return l+[0]*(len(arr)-len(l))
+```
