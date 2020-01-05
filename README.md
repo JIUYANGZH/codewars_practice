@@ -1,6 +1,6 @@
 # codewars_practice
 
-## Sections
+## 1 Sections
 
 Consider the following equation of a surface S: z\*z\*z = x\*x * y\*y.
 Take a cross section of S by a plane P: z = k where k is a positive integer (k > 0).
@@ -48,7 +48,7 @@ def c(k):
 ```
 
 
-## Lazy Repeater
+## 2 Lazy Repeater
 
 The makeLooper() function (make_looper in Python) takes a string (of non-zero length) as an argument. It returns a function. The function it returns will return successive characters of the string on successive invocations. It will start back at the beginning of the string once it reaches the end.
 
@@ -72,7 +72,7 @@ def make_looper(string):
     
 ```
 
-## Metric Units - 1
+## 3 Metric Units - 1
 
 Scientists working internationally use metric units almost exclusively. Unless that is, they wish to crash multimillion dollars worth of equipment on Mars.
 
@@ -106,7 +106,7 @@ def meters(x):
     return str(x)+arr[count]+'m'
 ```
 
-## flatten() 这题是递归
+## 4 flatten() 这题是递归
 
 For this exercise you will create a global flatten method. The method takes in any number of arguments and flattens them into a single array. If any of the arguments passed in are an array then the individual objects within the array will be flattened so that they exist at the same level as the other arguments. Any nested arrays, no matter how deep, should be flattened into the single array result.
 
@@ -133,7 +133,7 @@ def flatten(*args):
             直接把a加进result里
     
 ```
-## Diophantine Equation
+## 5 Diophantine Equation
 
 In mathematics, a Diophantine equation is a polynomial equation, usually with two or more unknowns, such that only the integer solutions are sought or studied.
 
@@ -167,7 +167,7 @@ def sol_equa(n):
     return res
 ```
 
-## Regex Password Validation
+## 6 Regex Password Validation
 
 You need to write regex that will validate a password to make sure it meets the following criteria:
 
@@ -191,7 +191,7 @@ regex = compile("""
 $              # end word
 """, VERBOSE)
 ```
-## Extract the domain name from a URL
+## 7 Extract the domain name from a URL
 Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
 
 domain_name("http://github.com/carbonfive/raygun") == "github" 
@@ -206,7 +206,7 @@ def domain_name(url):
     return re.search('(https?://)?(www\d?\.)?(?P<name>[\w-]+)\.', url).group('name')
 ```
 
-## Return substring instance count - 2
+## 8 Return substring instance count - 2
 
 Complete the solution so that it returns the number of times the search_text is found within the full_text.
 
@@ -237,13 +237,13 @@ def search_substr(full_text, search_text, allow_overlap=True):
     elif allow_overlap == False:
         return len(re.findall(search_text, full_text))
 ```
-## Legendre's formula
+## 9 Legendre's formula
 
 阶乘数的质因子分解，求一个阶乘数不同质因子的幂指数
 
 对于一个数n的阶乘n!，不同质因子p的幂指数为sum([int(n/p**i) for i in range(0,somevalue)])
 
-## Fixed-length integer partitions 递归题
+## 10 Fixed-length integer partitions 递归题
 
 A generalization of Bézier surfaces, called the S-patch, uses an interesting scheme for indexing its control points.
 
@@ -259,7 +259,7 @@ def indices(n, d):
     return [[r] + point for r in range(d + 1) for point in indices(n-1, d-r)] if n > 1 else [[d]]
 ```
 
-## By the Power Set of Castle Grayskull
+## 11 By the Power Set of Castle Grayskull
 
 Write a function that returns all of the sublists of a list or Array.
 
@@ -276,7 +276,7 @@ def power(s):
   return set
 ```
 
-## Last digit of a large number
+## 12 Last digit of a large number
 returns the last decimal digit of a^b
 
 last_digit(4, 1)                \# returns 4
@@ -294,7 +294,7 @@ def last_digit(n1, n2):
     return pow( n1, n2, 10 )
 ```
 
-## What's a Perfect Power anyway?
+## 13 What's a Perfect Power anyway?
 
 Your task is to check wheter a given integer is a perfect power. If it is a perfect power, return a pair m and k with m^k = n as a proof. 
 
@@ -314,7 +314,7 @@ def isPP(n):
     return None
 ```
 
-## Pick peaks 动态规划
+## 14 Pick peaks 动态规划
 
 In this kata, you will write a function that returns the positions and the values of the "peaks" (or local maxima) of a numeric array.
 
@@ -341,7 +341,7 @@ def pick_peaks(arr):
         # 如果后一个数等于前一个数，不做任何动作，继续比较下一个
     return {'pos':pos, 'peaks':[arr[i] for i in pos]}
 ```
-## Memoized Fibonacci 这个不是很懂
+## 15 Memoized Fibonacci 这个不是很懂
 
 implement the memoization solution to calculate fibonacci quickly, The trick of the memoized version is that we will keep a cache data structure (most likely an associative array) where we will store the Fibonacci numbers as we calculate them. When a Fibonacci number is calculated, we first look it up in the cache, if it's not there, we calculate it and put it in the cache, otherwise we returned the cached number.
 
@@ -368,7 +368,7 @@ def f(n):
         a,b = b,a+b
     return b
 ```
-## Number of trailing zeros of N!
+## 16 Number of trailing zeros of N!
 
 这道题实际上是让你算N的阶乘中质因子5的幂指数是多少，因为一个10会给N！带来一个0，10又只能由2\*5得到，所以只需计算5的幂指数就可以
 
@@ -394,7 +394,7 @@ def zeros(n):
   return x+zeros(x) if x else 0
 ```
 
-## Calculating with Functions
+## 17 Calculating with Functions
 
 这道题学习怎样使一个function输出另一个function，通过lambda, four(plus(five())) = four(plus(five)) = four(lambda x:x+5) = 4+5 = 9
 
@@ -427,7 +427,7 @@ def minus(y): return lambda x: x-y
 def times(y): return lambda  x: x*y
 def divided_by(y): return lambda  x: x/y
 ```
-## Moving Zeros To The End
+## 18 Moving Zeros To The End
 
 这道题考察的是python里1=True, 0=False, 但是1 is not True, 0 is not False
 
