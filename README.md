@@ -166,6 +166,32 @@ def sol_equa(n):
             
     return res
 ```
+
+## Regex Password Validation
+
+You need to write regex that will validate a password to make sure it meets the following criteria:
+
+At least six characters long
+contains a lowercase letter
+contains an uppercase letter
+contains a number
+Valid passwords will only be alphanumeric characters.
+
+```
+from re import compile, VERBOSE
+# re模块的re.VERBOSE可以把正则表达式写成多行，并且自动忽略空格。
+# *? 重复任意次，但尽可能少重复，非贪婪
+regex = compile("""
+^              # begin word
+(?=.*?[a-z])   # at least one lowercase letter
+(?=.*?[A-Z])   # at least one uppercase letter
+(?=.*?[0-9])   # at least one number
+[A-Za-z\d]     # only alphanumeric
+{6,}           # at least 6 characters long
+$              # end word
+""", VERBOSE)
+```
+
 ## Return substring instance count - 2
 
 Complete the solution so that it returns the number of times the search_text is found within the full_text.
@@ -235,3 +261,70 @@ def power(s):
     set += [x+[num] for x in set]
   return set
 ```
+
+## Last digit of a large number
+returns the last decimal digit of a^b
+
+last_digit(4, 1)                # returns 4
+
+last_digit(4, 2)                # returns 6
+
+last_digit(9, 7)                # returns 9
+
+last_digit(10, 10 ** 10)        # returns 0
+
+last_digit(2 ** 200, 2 ** 300)  # returns 6
+```
+pow(x,y,z) 函数是计算x的y次方，再对结果进行取模，其结果等效于pow(x,y) %z
+def last_digit(n1, n2):
+    return pow( n1, n2, 10 )
+```
+
+## What's a Perfect Power anyway?
+
+Your task is to check wheter a given integer is a perfect power. If it is a perfect power, return a pair m and k with m^k = n as a proof. 
+
+Note: For a perfect power, there might be several pairs. For example 81 = 3^4 = 9^2, so (3,4) and (9,2) are valid solutions. However, the tests take care of this, so if a number is a perfect power, return any pair that proves it.
+
+```
+def isPP(n):
+    for i in range(2, int(n**.5) + 1):
+        number = n
+        times = 0
+        # 如果n能被这个数i一直除直到除尽，那么就return这个结果，结果为i, 除的次数
+        while number % i == 0:
+            number /= i
+            times += 1
+            if number == 1:
+                return [i, times]
+    return None
+```
+
+## Pick peaks 动态规划
+
+In this kata, you will write a function that returns the positions and the values of the "peaks" (or local maxima) of a numeric array.
+
+For example, the array arr = [0, 1, 2, 5, 1, 0] has a peak at position 3 with a value of 5 (since arr[3] equals 5).
+
+Example: pickPeaks([3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 3]) should return {pos: [3, 7], peaks: [6, 3]} (or equivalent in other languages)
+
+The first and last elements of the array will not be considered as peaks (in the context of a mathematical function, we don't know what is after and before and therefore, we don't know if it is a peak or not).
+
+Also, beware of plateaus !!! [1, 2, 2, 2, 1] has a peak while [1, 2, 2, 2, 3] does not. In case of a plateau-peak, please only return the position and value of the beginning of the plateau. For example: pickPeaks([1, 2, 2, 2, 1]) returns {pos: [1], peaks: [2]} (or equivalent in other languages)
+
+```
+def pick_peaks(arr):
+    pos = []
+    peak = False
+    for i in range(1, len(arr)):
+        # 从第一个往后数，如果后一个比前一个数大，那么就把后一个数的index暂且列为peak
+        if arr[i] > arr[i-1]:
+            peak = i
+        # 如果后一个数比前一个数小，那么保存当前peak（这里保存的是index，不是那个数）进pos，然后重置peak，设为False (没有peak)
+        elif arr[i] < arr[i-1] and peak:
+            pos.append(peak)
+            peak = False
+        # 如果后一个数等于前一个数，不做任何动作，继续比较下一个
+    return {'pos':pos, 'peaks':[arr[i] for i in pos]}
+```
+
