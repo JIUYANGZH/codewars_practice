@@ -384,10 +384,10 @@ For more info, see: http://mathworld.wolfram.com/Factorial.html
 
 Examples
 zeros(6) = 1
-# 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720 --> 1 trailing zero
+\# 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720 --> 1 trailing zero
 
 zeros(12) = 2
-# 12! = 479001600 --> 2 trailing zeros
+\# 12! = 479001600 --> 2 trailing zeros
 ```
 def zeros(n):
   x = n/5
@@ -402,13 +402,13 @@ def zeros(n):
 
 This time we want to write calculations using functions and get the results. Let's have a look at some examples:
 
-seven(times(five())) # must return 35
+seven(times(five())) \# must return 35
 
-four(plus(nine())) # must return 13
+four(plus(nine())) \# must return 13
 
-eight(minus(three())) # must return 5
+eight(minus(three())) \# must return 5
 
-six(divided_by(two())) # must return 3
+six(divided_by(two())) \# must return 3
 
 ```
 def zero(f = None): return 0 if not f else f(0)
