@@ -279,15 +279,15 @@ def power(s):
 ## Last digit of a large number
 returns the last decimal digit of a^b
 
-last_digit(4, 1)                # returns 4
+last_digit(4, 1)                \# returns 4
 
-last_digit(4, 2)                # returns 6
+last_digit(4, 2)                \# returns 6
 
-last_digit(9, 7)                # returns 9
+last_digit(9, 7)                \# returns 9
 
-last_digit(10, 10 ** 10)        # returns 0
+last_digit(10, 10 ** 10)        \# returns 0
 
-last_digit(2 ** 200, 2 ** 300)  # returns 6
+last_digit(2 ** 200, 2 ** 300)  \# returns 6
 ```
 pow(x,y,z) 函数是计算x的y次方，再对结果进行取模，其结果等效于pow(x,y) %z
 def last_digit(n1, n2):
