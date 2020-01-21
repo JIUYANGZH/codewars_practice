@@ -440,3 +440,36 @@ def move_zeros(arr):
     l = [i for i in arr if isinstance(i, bool) or i!=0]
     return l+[0]*(len(arr)-len(l))
 ```
+
+## 19 Minimum number of taxis
+
+ Two customers, overlapping schedule. Two taxis needed.
+ First customer wants to be picked up 1 and dropped off 4.
+ Second customer wants to be picked up 2 and dropped off 6.
+requests = [(1, 4), (2, 6)]
+min_num_taxis(requests) # => 2
+
+ Two customers, no overlap in schedule. Only one taxi needed.
+ First customer wants to be picked up 1 and dropped off 4.
+ Second customer wants to be picked up 5 and dropped off 9.
+requests = [(1, 4), (5, 9)]
+min_num_taxis(requests) # => 1
+
+我想的第一个办法，是用active_car, free_car, suspend_car分别记录三种状态的车的数量，然后随着时间更新
+我的第二个办法，是先制作一张下车时间表，然后循环上车时间表，如果要上车的人时间<=下车表第一个-1，那就去掉下车表第一个，否则要车数量+1
+
+答案办法：
+```
+def min_num_taxis(a):
+    r = np.zeros(max(y for _, y in a) + 1)
+    # r是全时刻0
+    
+    for x, y in a:
+        r[x:y+1] += 1
+        print(r)
+    # 循环所有时段，把所有用车需求加进r
+    # [0. 1. 2. 3. 3. 3. 3. 2. 2. 1.]
+    # 这个列表表明了在某个时间，所需的车的个数，输出最大即可
+    return r.max()
+    
+```
