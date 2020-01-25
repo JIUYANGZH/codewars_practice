@@ -476,3 +476,5 @@ def min_num_taxis(a):
 # 20 关于至少有一人达到某条件的概率求解
 
 解为P(一人达到条件) - P(两人达到条件) + P(三人达到条件) - P(四人达到条件) ...... +/- P(全员达到条件)
+
+http://trin-hosts.trin.cam.ac.uk/fellows/dpk10/IA/chap2.pdf theorem 2.2
