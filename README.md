@@ -477,4 +477,6 @@ def min_num_taxis(a):
 
 解为P(一人达到条件) - P(两人达到条件) + P(三人达到条件) - P(四人达到条件) ...... +/- P(全员达到条件)
 
+这个解的上界可以通过truncate奇数项，下界可以通过truncate偶数项，因为这个式子其实相当于1 - 1/2 + 1/3 - 1/4 + 1/5 - 1/6....
+(Bonferroni’s Inequalities)
 http://trin-hosts.trin.cam.ac.uk/fellows/dpk10/IA/chap2.pdf theorem 2.2
