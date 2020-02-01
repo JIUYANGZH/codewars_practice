@@ -480,3 +480,41 @@ def min_num_taxis(a):
 这个解的上界可以通过truncate奇数项，下界可以通过truncate偶数项，因为这个式子其实相当于1 - 1/2 + 1/3 - 1/4 + 1/5 - 1/6....
 (Bonferroni’s Inequalities)
 http://trin-hosts.trin.cam.ac.uk/fellows/dpk10/IA/chap2.pdf theorem 2.2
+
+# 21 Recover a secret string from random triplets
+
+There is a secret string which is unknown to you. Given a collection of random triplets from the string, recover the original string.
+
+A triplet here is defined as a sequence of three letters such that each letter occurs somewhere before the next in the given string. "whi" is a triplet for the string "whatisup".
+
+```
+
+# 核心思想，不断循环triplets，只找当前的第一个字母，找到了就把这个字母删去，当前的第一个字母一定只出现在triplets的第一位而且不会出现在后面位
+# 如果这个字母不是首字母，那么它必定会出现在后面位，试想，如果有两个字母都只出现在第一位，那么就无法分辨哪个在前面，也就无法推出整个string
+所以必定只有一个字母只出现在第一位
+
+def recoverSecret(triplets):
+    res = ''
+    while triplets != []:
+        non_firsts = [num for t in triplets for num in t[1:]]
+        firsts = [t[0] for t in triplets]
+        
+        #print(non_firsts)
+        #print(firsts)
+        #print('\n')
+        
+        
+        for f in firsts:
+            if f not in non_firsts:
+                #print(f)
+                res += f
+                for t in triplets:
+                    if t[0] == f:
+                        t.pop(0)
+                #print(triplets)
+                break
+        triplets = [t for t in triplets if t != []]
+    return res
+```
+
+
