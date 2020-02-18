@@ -473,7 +473,7 @@ def min_num_taxis(a):
     return r.max()
     
 ```
-# 20 关于至少有一人达到某条件的概率求解
+## 20 关于至少有一人达到某条件的概率求解
 
 解为P(一人达到条件) - P(两人达到条件) + P(三人达到条件) - P(四人达到条件) ...... +/- P(全员达到条件)
 
@@ -481,7 +481,7 @@ def min_num_taxis(a):
 (Bonferroni’s Inequalities)
 http://trin-hosts.trin.cam.ac.uk/fellows/dpk10/IA/chap2.pdf theorem 2.2
 
-# 21 Recover a secret string from random triplets
+## 21 Recover a secret string from random triplets
 
 There is a secret string which is unknown to you. Given a collection of random triplets from the string, recover the original string.
 
@@ -517,7 +517,7 @@ def recoverSecret(triplets):
     return res
 ```
 
-# Smallest possible sum
+## 22 Smallest possible sum
 
 Description
 Given an array X of positive integers, its elements are to be transformed by running the following operation on them as many times as required:
