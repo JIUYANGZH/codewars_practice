@@ -563,3 +563,71 @@ def solution(a):
     return(max(a) * a_len)
 
 ```
+## 22 Coin problem
+
+**注意，与coin problem相似的还有一个coin change problem，是个动态规划题，以后整理一下**
+Briefing: There is a list of positive natural numbers. Find the largest number that cannot be represented as the sum of this numbers, given that each number can be added unlimited times. Return this number, either 0 if there are no such numbers, or -1 if there are an infinite number of them.
+
+Example:
+
+Let's say [3,4] are given numbers. Lets check each number one by one:
+1 - (no solution) - good
+2 - (no solution) - good
+3 = 3 won't go
+4 = 4 won't go
+5 - (no solution) - good
+6 = 3+3 won't go
+7 = 3+4 won't go
+8 = 4+4 won't go
+9 = 3+3+3 won't go
+10 = 3+3+4 won't go
+11 = 3+4+4 won't go
+13 = 3+3+3+4 won't go
+...and so on. So 5 is the biggest 'good'. return 5
+
+这题完全不会，贴两个解法在下面
+```
+# 解法1
+from functools import reduce
+from math import gcd
+
+def survivor(a):
+    """Round Robin by Bocker & Liptak"""
+    def __residue_table(a):
+        n = [0] + [None] * (a[0] - 1)
+        for i in range(1, len(a)):
+            d = gcd(a[0], a[i])
+            for r in range(d):
+                try:
+                    nn = min(n[q] for q in range(r, a[0], d) if n[q] is not None)
+                except ValueError:
+                    continue
+                for _ in range(a[0] // d):
+                    nn += a[i]
+                    p = nn % a[0]
+                    if n[p] is not None: nn = min(nn, n[p])
+                    n[p] = nn
+        return n
+
+    a.sort()
+    if len(a) < 1 or reduce(gcd, a) > 1: return -1
+    if a[0] == 1: return 0
+    return max(__residue_table(a)) - a[0]
+    
+# 解法2
+from fractions import gcd
+from functools import reduce
+from itertools import count
+
+def survivor(l):
+    if 1 in l: return 0
+    if len(l) < 2 or reduce(gcd,l) > 1: return -1
+    if len(l) == 2: return (l[0]-1)*(l[1]-1)-1
+    m,t,r,w=[True],0,0,max(l)
+    for i in count(1):
+        m = m[-w:] + [any(m[-n] for n in l if len(m)>=n)]
+        if not m[-1]: t,r = i,0
+        else: r += 1
+        if r == w: break
+    return t
+```
