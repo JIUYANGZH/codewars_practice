@@ -517,4 +517,49 @@ def recoverSecret(triplets):
     return res
 ```
 
+# Smallest possible sum
 
+Description
+Given an array X of positive integers, its elements are to be transformed by running the following operation on them as many times as required:
+
+if X[i] > X[j] then X[i] = X[i] - X[j]
+
+When no more transformations are possible, return its sum ("smallest possible sum").
+
+For instance, the successive transformation of the elements of input X = [6, 9, 21] is detailed below:
+
+X_1 = [6, 9, 12] # -> X_1[2] = X[2] - X[1] = 21 - 9
+X_2 = [6, 9, 6]  # -> X_2[2] = X_1[2] - X_1[0] = 12 - 6
+X_3 = [6, 3, 6]  # -> X_3[1] = X_2[1] - X_2[0] = 9 - 6
+X_4 = [6, 3, 3]  # -> X_4[2] = X_3[2] - X_3[1] = 6 - 3
+X_5 = [3, 3, 3]  # -> X_5[1] = X_4[0] - X_4[1] = 6 - 3
+so result will be 3 + 3 + 3 = 9
+这道题用题目给出的方法计算必定超时
+仔细观察后发现，其实每一步的subtraction，都是从比较大的那个数中取走一个比较小的数，在每一步相减的过程中，**差值不可能小于他们的最大公约数**，也就是，list会收敛到每一位都是他们的最大公约数
+```
+#举例 [6,9,12] = [3*2,3*3,3*4] --> [3*2,3*3,3*4-3*3=3*1] --> [3*2,3*1,3*1] --> [3*1,3*1,3*1]
+
+解法1：
+from fractions import gcd
+from functools import reduce
+
+
+def find_gcd(list):
+    x = reduce(gcd, list)
+    return x
+    
+def solution(a):
+    return find_gcd(a) * len(a)
+    
+解法2：使用set，我们知道收敛后list的每一位都相同，所以只需找到这一个数字就可以，使用set，每次递归把 max(a) 替换成 max(a) - secondmax(a)，如果 max(a) - secondmax(a)已经在a里，因为a是set，相当于不加，这个解法好处是非常快，如果把set换成list，同样的方法会超时
+
+def solution(a):
+    a_len = len(a)
+    a = set(a)
+    while len(a) != 1:
+        b = max(a)
+        a.remove(b)
+        a.add(b-max(a))
+    return(max(a) * a_len)
+
+```
