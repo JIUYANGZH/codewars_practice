@@ -631,3 +631,29 @@ def survivor(l):
         if r == w: break
     return t
 ```
+
+## 走迷宫
+You are at position [0, 0] in maze NxN and you can only move in one of the four cardinal directions (i.e. North, East, South, West). Return true if you can reach position [N-1, N-1] or false otherwise.
+
+Empty positions are marked as . Walls are marked as W. Start and exit positions are empty in all test cases.
+
+解法：一步一步走，matrix为迷宫记录，stack为计划路径，到达新的一个格子以后依次尝试各个可能的move，如果move是墙，就continue，如果move是走过的格子，也continue，如果move是没走过的格子，那么就标记此格为x，意思是走过了，然后把这个格子的下一个所有可能的moves加进stack计划里
+```
+def path_finder(maze):
+    print(maze)
+    matrix = list(map(list, maze.splitlines()))
+    stack, length = [[0, 0]], len(matrix)
+    while len(stack):
+      for i in matrix:
+          print(i)
+      print('\n')
+      x, y = stack.pop()
+      
+      if matrix[x][y] == '.':
+        matrix[x][y] = 'x'
+        for x, y in (x, y-1), (x, y+1), (x-1, y), (x+1, y):
+          if 0 <= x < length and 0 <= y < length:
+            stack.append((x, y))
+    return matrix[length-1][length-1] == 'x'
+   
+  ```
