@@ -704,6 +704,5 @@ def proper_fractions(n):
 " />
 
 例如
-<img src="https://latex.codecogs.com/gif.latex?%5Cvarphi%20%2872%29%3D%5Cvarphi%20%282%5E%7B3%7D%5Ctimes%203%5E%7B2%7D%29%3D2%5E%7B%7B3-1%7D%7D%282-1%29%5Ctimes%203%5E%7B%7B2-1%7D%7D%283-1%29%3D2%5E%7B2%7D%5Ctimes%201%5Ctimes%203%5Ctimes%202%3D24
-" />
+<img src="https://latex.codecogs.com/gif.latex?%5Cvarphi%20%2872%29%3D%5Cvarphi%20%282%5E%7B3%7D%5Ctimes%203%5E%7B2%7D%29%3D2%5E%7B%7B3-1%7D%7D%282-1%29%5Ctimes%203%5E%7B%7B2-1%7D%7D%283-1%29%3D2%5E%7B2%7D%5Ctimes%201%5Ctimes%203%5Ctimes%202%3D24" />
 
