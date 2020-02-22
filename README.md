@@ -632,7 +632,7 @@ def survivor(l):
     return t
 ```
 
-## 走迷宫
+## 23 走迷宫
 You are at position [0, 0] in maze NxN and you can only move in one of the four cardinal directions (i.e. North, East, South, West). Return true if you can reach position [N-1, N-1] or false otherwise.
 
 Empty positions are marked as . Walls are marked as W. Start and exit positions are empty in all test cases.
@@ -658,7 +658,7 @@ def path_finder(maze):
    
   ```
 
-## 大数质因子分解 large number factorial factors
+## 24 大数质因子分解 large number factorial factors
 
 ```
 def primeFactors(n): 
@@ -677,3 +677,27 @@ def primeFactors(n):
     return list(set(r))
     
   ```
+## 25 Euler's totient function, find the number of coprime number below n
+欧拉函数{\displaystyle \varphi (n)}\varphi (n)，比n小的所有与n互质的数的个数，举例
+phi(8) = 4, 因为1,3,5,7与8互质，互质：最大公约数为1
+```
+def proper_fractions(n):
+    # 先让phi=n，然后逐步减
+    phi = n > 1 and n
+    for p in range(2, int(n ** .5) + 1):
+        # 如果n可以整除p，也就是说p是n的一个因子
+        if not n % p:
+            # 就把phi减去phi//p
+            phi -= phi // p
+            # 把n缩小为除掉所有这个质因子p的数
+            while not n % p:
+                n //= p
+                
+    if n > 1: phi -= phi // n
+    return phi
+```
+若{\displaystyle n=p_{1}^{k_{1}}p_{2}^{k_{2}}\cdots p_{r}^{k_{r}}}n=p_{1}^{{k_{1}}}p_{2}^{{k_{2}}}\cdots p_{r}^{{k_{r}}}
+则{\displaystyle \varphi (n)=\prod _{i=1}^{r}p_{i}^{k_{i}-1}(p_{i}-1)=\prod _{p\mid n}p^{\alpha _{p}-1}(p-1)=n\prod _{p|n}\left(1-{\frac {1}{p}}\right)}\varphi (n)=\prod _{{i=1}}^{r}p_{i}^{{k_{i}-1}}(p_{i}-1)=\prod _{{p\mid n}}p^{{\alpha _{p}-1}}(p-1)=n\prod _{{p|n}}\left(1-{\frac  {1}{p}}\right)。
+其中{\displaystyle \alpha _{p}}\alpha _{p}是使得{\displaystyle p^{\alpha }}p^{{\alpha }}整除{\displaystyle n}n的最大整数{\displaystyle \alpha }\alpha （这里{\displaystyle \alpha _{p_{i}}=k_{i}}\alpha _{{p_{i}}}=k_{i}）。
+
+例如{\displaystyle \varphi (72)=\varphi (2^{3}\times 3^{2})=2^{3-1}(2-1)\times 3^{2-1}(3-1)=2^{2}\times 1\times 3\times 2=24}\varphi (72)=\varphi (2^{3}\times 3^{2})=2^{{3-1}}(2-1)\times 3^{{2-1}}(3-1)=2^{2}\times 1\times 3\times 2=24
