@@ -700,8 +700,7 @@ def proper_fractions(n):
 <img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20n%3Dp_%7B1%7D%5E%7Bk_%7B1%7D%7Dp_%7B2%7D%5E%7Bk_%7B2%7D%7D%5Ccdots%20p_%7Br%7D%5E%7Bk_%7Br%7D%7D%7D" />
 
 则
-<img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20%5Cvarphi%20%28n%29%3D%5Cprod%20_%7Bi%3D1%7D%5E%7Br%7Dp_%7Bi%7D%5E%7Bk_%7Bi%7D-1%7D%28p_%7Bi%7D-1%29%3D%5Cprod%20_%7Bp%5Cmid%20n%7Dp%5E%7B%5Calpha%20_%7Bp%7D-1%7D%28p-1%29%3Dn%5Cprod%20_%7Bp%7Cn%7D%5Cleft%281-%7B%5Cfrac%20%7B1%7D%7Bp%7D%7D%5Cright%29%7D
-" />
+<img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20%5Cvarphi%20%28n%29%3D%5Cprod%20_%7Bi%3D1%7D%5E%7Br%7Dp_%7Bi%7D%5E%7Bk_%7Bi%7D-1%7D%28p_%7Bi%7D-1%29%3D%5Cprod%20_%7Bp%5Cmid%20n%7Dp%5E%7B%5Calpha%20_%7Bp%7D-1%7D%28p-1%29%3Dn%5Cprod%20_%7Bp%7Cn%7D%5Cleft%281-%7B%5Cfrac%20%7B1%7D%7Bp%7D%7D%5Cright%29%7D" />
 
 例如
 <img src="https://latex.codecogs.com/gif.latex?%5Cvarphi%20%2872%29%3D%5Cvarphi%20%282%5E%7B3%7D%5Ctimes%203%5E%7B2%7D%29%3D2%5E%7B%7B3-1%7D%7D%282-1%29%5Ctimes%203%5E%7B%7B2-1%7D%7D%283-1%29%3D2%5E%7B2%7D%5Ctimes%201%5Ctimes%203%5Ctimes%202%3D24" />
