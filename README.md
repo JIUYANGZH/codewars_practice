@@ -696,8 +696,8 @@ def proper_fractions(n):
     if n > 1: phi -= phi // n
     return phi
 ```
-若{\displaystyle n=p_{1}^{k_{1}}p_{2}^{k_{2}}\cdots p_{r}^{k_{r}}}n=p_{1}^{{k_{1}}}p_{2}^{{k_{2}}}\cdots p_{r}^{{k_{r}}}
+若$$ {\displaystyle n=p_{1}^{k_{1}}p_{2}^{k_{2}}\cdots p_{r}^{k_{r}}}n=p_{1}^{{k_{1}}}p_{2}^{{k_{2}}}\cdots p_{r}^{{k_{r}}}
 则{\displaystyle \varphi (n)=\prod _{i=1}^{r}p_{i}^{k_{i}-1}(p_{i}-1)=\prod _{p\mid n}p^{\alpha _{p}-1}(p-1)=n\prod _{p|n}\left(1-{\frac {1}{p}}\right)}\varphi (n)=\prod _{{i=1}}^{r}p_{i}^{{k_{i}-1}}(p_{i}-1)=\prod _{{p\mid n}}p^{{\alpha _{p}-1}}(p-1)=n\prod _{{p|n}}\left(1-{\frac  {1}{p}}\right)。
 其中{\displaystyle \alpha _{p}}\alpha _{p}是使得{\displaystyle p^{\alpha }}p^{{\alpha }}整除{\displaystyle n}n的最大整数{\displaystyle \alpha }\alpha （这里{\displaystyle \alpha _{p_{i}}=k_{i}}\alpha _{{p_{i}}}=k_{i}）。
 
-例如{\displaystyle \varphi (72)=\varphi (2^{3}\times 3^{2})=2^{3-1}(2-1)\times 3^{2-1}(3-1)=2^{2}\times 1\times 3\times 2=24}\varphi (72)=\varphi (2^{3}\times 3^{2})=2^{{3-1}}(2-1)\times 3^{{2-1}}(3-1)=2^{2}\times 1\times 3\times 2=24
+例如{\displaystyle \varphi (72)=\varphi (2^{3}\times 3^{2})=2^{3-1}(2-1)\times 3^{2-1}(3-1)=2^{2}\times 1\times 3\times 2=24}\varphi (72)=\varphi (2^{3}\times 3^{2})=2^{{3-1}}(2-1)\times 3^{{2-1}}(3-1)=2^{2}\times 1\times 3\times 2=24 $$
