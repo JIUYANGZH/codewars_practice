@@ -657,3 +657,23 @@ def path_finder(maze):
     return matrix[length-1][length-1] == 'x'
    
   ```
+
+## 大数质因子分解 large number factorial factors
+
+```
+def primeFactors(n): 
+    r = []
+    # 先把因子2除尽
+    while n % 2 == 0: 
+        r.append(2)
+        n = n / 2
+    # 再遍历剩下的，依次除尽
+    for i in range(3,int(math.sqrt(n))+1,2): 
+        while n % i== 0: 
+            r.append(i)
+            n = n / i 
+    if n > 1:
+        r.append(n)
+    return list(set(r))
+    
+  ```
