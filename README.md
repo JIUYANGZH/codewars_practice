@@ -696,6 +696,8 @@ def proper_fractions(n):
     if n > 1: phi -= phi // n
     return phi
 ```
+
+<img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20n%3Dp_%7B1%7D%5E%7Bk_%7B1%7D%7Dp_%7B2%7D%5E%7Bk_%7B2%7D%7D%5Ccdots%20p_%7Br%7D%5E%7Bk_%7Br%7D%7D%7Dn%3Dp_%7B1%7D%5E%7B%7Bk_%7B1%7D%7D%7Dp_%7B2%7D%5E%7B%7Bk_%7B2%7D%7D%7D%5Ccdots%20p_%7Br%7D%5E%7B%7Bk_%7Br%7D%7D%7D" />
 若$$ {\displaystyle n=p_{1}^{k_{1}}p_{2}^{k_{2}}\cdots p_{r}^{k_{r}}}n=p_{1}^{{k_{1}}}p_{2}^{{k_{2}}}\cdots p_{r}^{{k_{r}}}
 则{\displaystyle \varphi (n)=\prod _{i=1}^{r}p_{i}^{k_{i}-1}(p_{i}-1)=\prod _{p\mid n}p^{\alpha _{p}-1}(p-1)=n\prod _{p|n}\left(1-{\frac {1}{p}}\right)}\varphi (n)=\prod _{{i=1}}^{r}p_{i}^{{k_{i}-1}}(p_{i}-1)=\prod _{{p\mid n}}p^{{\alpha _{p}-1}}(p-1)=n\prod _{{p|n}}\left(1-{\frac  {1}{p}}\right)。
 其中{\displaystyle \alpha _{p}}\alpha _{p}是使得{\displaystyle p^{\alpha }}p^{{\alpha }}整除{\displaystyle n}n的最大整数{\displaystyle \alpha }\alpha （这里{\displaystyle \alpha _{p_{i}}=k_{i}}\alpha _{{p_{i}}}=k_{i}）。
