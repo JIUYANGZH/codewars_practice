@@ -678,7 +678,7 @@ def primeFactors(n):
     
   ```
 ## 25 Euler's totient function, find the number of coprime number below n
-欧拉函数{\displaystyle \varphi (n)}\varphi (n)，比n小的所有与n互质的数的个数，举例
+欧拉函数phi(n)，比n小的所有与n互质的数的个数，举例
 phi(8) = 4, 因为1,3,5,7与8互质，互质：最大公约数为1
 ```
 def proper_fractions(n):
@@ -696,10 +696,14 @@ def proper_fractions(n):
     if n > 1: phi -= phi // n
     return phi
 ```
+若
+<img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20n%3Dp_%7B1%7D%5E%7Bk_%7B1%7D%7Dp_%7B2%7D%5E%7Bk_%7B2%7D%7D%5Ccdots%20p_%7Br%7D%5E%7Bk_%7Br%7D%7D%7D" />
 
-<img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20n%3Dp_%7B1%7D%5E%7Bk_%7B1%7D%7Dp_%7B2%7D%5E%7Bk_%7B2%7D%7D%5Ccdots%20p_%7Br%7D%5E%7Bk_%7Br%7D%7D%7Dn%3Dp_%7B1%7D%5E%7B%7Bk_%7B1%7D%7D%7Dp_%7B2%7D%5E%7B%7Bk_%7B2%7D%7D%7D%5Ccdots%20p_%7Br%7D%5E%7B%7Bk_%7Br%7D%7D%7D" />
-若$$ {\displaystyle n=p_{1}^{k_{1}}p_{2}^{k_{2}}\cdots p_{r}^{k_{r}}}n=p_{1}^{{k_{1}}}p_{2}^{{k_{2}}}\cdots p_{r}^{{k_{r}}}
-则{\displaystyle \varphi (n)=\prod _{i=1}^{r}p_{i}^{k_{i}-1}(p_{i}-1)=\prod _{p\mid n}p^{\alpha _{p}-1}(p-1)=n\prod _{p|n}\left(1-{\frac {1}{p}}\right)}\varphi (n)=\prod _{{i=1}}^{r}p_{i}^{{k_{i}-1}}(p_{i}-1)=\prod _{{p\mid n}}p^{{\alpha _{p}-1}}(p-1)=n\prod _{{p|n}}\left(1-{\frac  {1}{p}}\right)。
-其中{\displaystyle \alpha _{p}}\alpha _{p}是使得{\displaystyle p^{\alpha }}p^{{\alpha }}整除{\displaystyle n}n的最大整数{\displaystyle \alpha }\alpha （这里{\displaystyle \alpha _{p_{i}}=k_{i}}\alpha _{{p_{i}}}=k_{i}）。
+则
+<img src="https://latex.codecogs.com/gif.latex?%7B%5Cdisplaystyle%20%5Cvarphi%20%28n%29%3D%5Cprod%20_%7Bi%3D1%7D%5E%7Br%7Dp_%7Bi%7D%5E%7Bk_%7Bi%7D-1%7D%28p_%7Bi%7D-1%29%3D%5Cprod%20_%7Bp%5Cmid%20n%7Dp%5E%7B%5Calpha%20_%7Bp%7D-1%7D%28p-1%29%3Dn%5Cprod%20_%7Bp%7Cn%7D%5Cleft%281-%7B%5Cfrac%20%7B1%7D%7Bp%7D%7D%5Cright%29%7D
+" />
 
-例如{\displaystyle \varphi (72)=\varphi (2^{3}\times 3^{2})=2^{3-1}(2-1)\times 3^{2-1}(3-1)=2^{2}\times 1\times 3\times 2=24}\varphi (72)=\varphi (2^{3}\times 3^{2})=2^{{3-1}}(2-1)\times 3^{{2-1}}(3-1)=2^{2}\times 1\times 3\times 2=24 $$
+例如
+<img src="https://latex.codecogs.com/gif.latex?%5Cvarphi%20%2872%29%3D%5Cvarphi%20%282%5E%7B3%7D%5Ctimes%203%5E%7B2%7D%29%3D2%5E%7B%7B3-1%7D%7D%282-1%29%5Ctimes%203%5E%7B%7B2-1%7D%7D%283-1%29%3D2%5E%7B2%7D%5Ctimes%201%5Ctimes%203%5Ctimes%202%3D24
+" />
+
